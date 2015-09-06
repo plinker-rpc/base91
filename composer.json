@@ -3,12 +3,18 @@
     "description": "",
     "license": "MIT",
     "keywords": [],
+    "homepage": "http://plinker.icodes.it/",
     "authors": [
         {
             "name": "Lawrence Cherone",
-            "email": "lawrence@opensauce.systems"
+            "email": "lawrence@cherone.co.uk",
+            "homepage": "http://cherone.co.uk/",
+            "role": "Owner"
         }
     ],
+    "support": {
+        "email": "plinker@icodes.it"
+    },
     "require": {
     },
     "autoload": {
