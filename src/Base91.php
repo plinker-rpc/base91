@@ -1,5 +1,5 @@
 <?php
-namespace plinker\Base91;
+namespace Plinker\Base91;
 
 class Base91 {
 

@@ -3,7 +3,7 @@
     "description": "",
     "license": "MIT",
     "keywords": [],
-    "homepage": "https://bitbucket.org/plinker/example/",
+    "homepage": "https://bitbucket.org/Plinker/example/",
     "authors": [
         {
             "name": "Lawrence Cherone",
@@ -19,7 +19,7 @@
     },
     "autoload": {
         "psr-4": {
-            "plinker\\Base91\\": "src"
+            "Plinker\\Base91\\": "src"
         }
     }
 }
