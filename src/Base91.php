@@ -1,9 +1,9 @@
 <?php
 namespace Plinker\Base91;
 
-class Base91 {
-
-    static private $chars = array(
+class Base91
+{
+    private static $chars = array(
         'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M',
         'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z',
         'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm',
@@ -95,5 +95,4 @@ class Base91 {
         }
         return $return;
     }
-
 }
