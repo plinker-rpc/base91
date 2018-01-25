@@ -3,7 +3,7 @@
     "description": "",
     "license": "MIT",
     "keywords": [],
-    "homepage": "https://bitbucket.org/plinker/example/",
+    "homepage": "https://github.com/plinker-rpc",
     "authors": [
         {
             "name": "Lawrence Cherone",
@@ -13,7 +13,7 @@
         }
     ],
     "support": {
-        "email": "plinker@icodes.it"
+        "email": "lawrence@cherone.co.uk"
     },
     "require": {
     },
