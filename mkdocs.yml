@@ -16,9 +16,9 @@ theme:
   palette:
     primary: 'blue'
     accent: 'blue'
-  font:
-    text: 'Ubuntu'
-    code: 'Ubuntu Mono'
+  #font:
+  #  text: 'Ubuntu'
+  #  code: 'Ubuntu Mono'
     
 # Configuration
 repo_name: 'plinker-rpc'
