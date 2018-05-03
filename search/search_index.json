@@ -1,0 +1,9 @@
+{
+    "docs": [
+        {
+            "location": "/", 
+            "text": "A core component, which base91 encodes the payload, you do not need to include it as its included with core.\n\n\nSee the \norganisations page\n for additional components.", 
+            "title": "Home"
+        }
+    ]
+}
