@@ -1,0 +1,47 @@
+site_name: PlinkerRPC
+site_description: 'PlinkerRPC PHP client/server makes it really easy to link and execute generic PHP components on remote systems, while maintaining the feel of a local method call.'
+site_author: 'Lawrence Cherone'
+site_url: 'https://github.com/plinker-rpc'
+
+# Copyright
+copyright: 'Copyright &copy; 2018 Lawrence Cherone - PlinkerRPC'
+
+# Theme
+theme:
+  #feature:
+  #  tabs: true
+  logo: 
+    icon: 'language'
+  name: 'material'
+  palette:
+    primary: 'blue'
+    accent: 'blue'
+  font:
+    text: 'Ubuntu'
+    code: 'Ubuntu Mono'
+    
+# Configuration
+repo_name: 'plinker-rpc'
+repo_url: 'https://github.com/plinker-rpc'
+edit_uri: ''
+
+# Customization
+extra:
+  social:
+    - type: 'github'
+      link: 'https://github.com/plinker-rpc'
+  disqus: 'plinker-rpc'
+  
+# Extensions
+markdown_extensions:
+  - admonition
+  - codehilite:
+      guess_lang: true
+  - toc:
+      permalink: true
+  - meta
+  - pymdownx.inlinehilite
+  - pymdownx.magiclink
+  - pymdownx.tasklist:
+      custom_checkbox: true
+  - pymdownx.tilde
