@@ -1,16 +1,22 @@
 # Base91
 
-!!! info "Development halted"
-    This component is no longer being actively developed, though bugs will be fixed if reported.
+!!! info
+    This component was originally used as part of the core for encoding the encrypted payload, but it is no longer used as to support the PHP extension version of the client.
 
-A core component, which base91 encodes the payload, you do not need to include it as its included with core.
+Base91 is an advanced method for encoding binary data as ASCII characters. 
+It is similar to base64, but is more efficient and compact. 
+The overhead produced by base91 depends on the input data. It amounts at 
+most to 23% (versus 33% for base64) and can range down to 14%, which typically 
+occurs on 0-byte blocks. This makes base91 very useful for transferring larger 
+files over binary unsafe connections like e-mail or terminal lines.
+
 
 ## Install
 
 Require this package with composer using the following command:
 
 ``` bash
-$ composer require plinker/asterisk
+$ composer require plinker/base91
 ```
 
 ## Client
@@ -30,41 +36,12 @@ Creating a client instance is done as follows:
     $client = new \Plinker\Core\Client(
         'http://example.com/server.php',
         [
-            'secret' => 'a secret password',
-            'database' => [
-                'dsn' => 'mysql:host=127.0.0.1;dbname=asterisk',
-                'username' => '',
-                'password' => '',
-                'database' => '',
-                'freeze' => false,
-                'debug' => false
-            ],
-            'ami' => [
-                'server' => '127.0.0.1',
-                'port' => '5038',
-                'username' => '',
-                'password' => ''
-            ]
+            'secret' => 'a secret password'
         ]
     );
     
     // or using global function
-    $client = plinker_client('http://example.com/server.php', 'a secret password', [
-        'database' => [
-            'dsn' => 'mysql:host=127.0.0.1;dbname=asterisk',
-            'username' => '',
-            'password' => '',
-            'database' => '',
-            'freeze' => false,
-            'debug' => false
-        ],
-        'ami' => [
-            'server' => '127.0.0.1',
-            'port' => '5038',
-            'username' => '',
-            'password' => ''
-        ]
-    ]);
+    $client = plinker_client('http://example.com/server.php', 'a secret password');
    
  
 ## Methods
@@ -72,60 +49,37 @@ Creating a client instance is done as follows:
 Once setup, you call the class though its namespace to its method.
 
 
-### Command
+### Encode
 
-Execute ASM command.
+Encode a string.
+
+**Call**
+
+
+``` php
+$result = $client->base91->encode('encode this string');
+```
+
+**Response**
+``` text
+toX<5+UCmUW6GFso^zZ2(.A
+```
+
+### Decode
+
+Decode a string.
 
 **Call**
 
 
 ```
-$result = $client->asterisk->command('sip show peers');
+$result = $client->base91->decode('toX<5+UCmUW6GFso^zZ2(.A');
 ```
 
 **Response**
 ```
-
+encode this string
 ```
-
-### Get Queue
-
-Connect into AMI and issue asterisk command [queue show *].
-
-**Call**
-
-
-```
-$result = $client->asterisk->getQueue('foo');
-```
-
-**Response**
-```
-
-```
-
-### Show Channels
-
-Connect into AMI and issue asterisk command [core show channels].
-
-**Call**
-
-
-```
-$result = $client->asterisk->coreShowChannels();
-```
-
-**Response**
-```
-Array
-(
-    'active_channels' => 0,
-    'active_calls' => 0,
-    'calls_processed' => 0
-}
-```
-
-And other methods see: `vendor/asterisk/src/Asterisk.php`
 
 ## Testing
 
