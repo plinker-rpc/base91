@@ -41,7 +41,7 @@ Creating a client instance is done as follows:
     // or using global function
     $client = plinker_client('http://example.com/server.php', 'a secret password');
    
- 
+   
 ## Methods
 
 Once setup, you call the class though its namespace to its method.
