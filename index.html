@@ -291,22 +291,15 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#command" title="Command" class="md-nav__link">
-    Command
+  <a href="#encode" title="Encode" class="md-nav__link">
+    Encode
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#get-queue" title="Get Queue" class="md-nav__link">
-    Get Queue
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#show-channels" title="Show Channels" class="md-nav__link">
-    Show Channels
+  <a href="#decode" title="Decode" class="md-nav__link">
+    Decode
   </a>
   
 </li>
@@ -419,22 +412,15 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#command" title="Command" class="md-nav__link">
-    Command
+  <a href="#encode" title="Encode" class="md-nav__link">
+    Encode
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#get-queue" title="Get Queue" class="md-nav__link">
-    Get Queue
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#show-channels" title="Show Channels" class="md-nav__link">
-    Show Channels
+  <a href="#decode" title="Decode" class="md-nav__link">
+    Decode
   </a>
   
 </li>
@@ -512,13 +498,18 @@
                 
                 <h1 id="base91">Base91<a class="headerlink" href="#base91" title="Permanent link">&para;</a></h1>
 <div class="admonition info">
-<p class="admonition-title">Development halted</p>
-<p>This component is no longer being actively developed, though bugs will be fixed if reported.</p>
+<p class="admonition-title">Info</p>
+<p>This component was originally used as part of the core for encoding the encrypted payload, but it is no longer used as to support the PHP extension version of the client.</p>
 </div>
-<p>A core component, which base91 encodes the payload, you do not need to include it as its included with core.</p>
+<p>Base91 is an advanced method for encoding binary data as ASCII characters. 
+It is similar to base64, but is more efficient and compact. 
+The overhead produced by base91 depends on the input data. It amounts at 
+most to 23% (versus 33% for base64) and can range down to 14%, which typically 
+occurs on 0-byte blocks. This makes base91 very useful for transferring larger 
+files over binary unsafe connections like e-mail or terminal lines.</p>
 <h2 id="install">Install<a class="headerlink" href="#install" title="Permanent link">&para;</a></h2>
 <p>Require this package with composer using the following command:</p>
-<div class="codehilite"><pre><span></span>$ composer require plinker/asterisk
+<div class="codehilite"><pre><span></span>$ composer require plinker/base91
 </pre></div>
 
 
@@ -536,88 +527,41 @@
 <span class="nv">$client</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">\Plinker\Core\Client</span><span class="p">(</span>
     <span class="s1">&#39;http://example.com/server.php&#39;</span><span class="p">,</span>
     <span class="p">[</span>
-        <span class="s1">&#39;secret&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;a secret password&#39;</span><span class="p">,</span>
-        <span class="s1">&#39;database&#39;</span> <span class="o">=&gt;</span> <span class="p">[</span>
-            <span class="s1">&#39;dsn&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;mysql:host=127.0.0.1;dbname=asterisk&#39;</span><span class="p">,</span>
-            <span class="s1">&#39;username&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;&#39;</span><span class="p">,</span>
-            <span class="s1">&#39;password&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;&#39;</span><span class="p">,</span>
-            <span class="s1">&#39;database&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;&#39;</span><span class="p">,</span>
-            <span class="s1">&#39;freeze&#39;</span> <span class="o">=&gt;</span> <span class="k">false</span><span class="p">,</span>
-            <span class="s1">&#39;debug&#39;</span> <span class="o">=&gt;</span> <span class="k">false</span>
-        <span class="p">],</span>
-        <span class="s1">&#39;ami&#39;</span> <span class="o">=&gt;</span> <span class="p">[</span>
-            <span class="s1">&#39;server&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;127.0.0.1&#39;</span><span class="p">,</span>
-            <span class="s1">&#39;port&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;5038&#39;</span><span class="p">,</span>
-            <span class="s1">&#39;username&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;&#39;</span><span class="p">,</span>
-            <span class="s1">&#39;password&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;&#39;</span>
-        <span class="p">]</span>
+        <span class="s1">&#39;secret&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;a secret password&#39;</span>
     <span class="p">]</span>
 <span class="p">);</span>
 
 <span class="c1">// or using global function</span>
-<span class="nv">$client</span> <span class="o">=</span> <span class="nx">plinker_client</span><span class="p">(</span><span class="s1">&#39;http://example.com/server.php&#39;</span><span class="p">,</span> <span class="s1">&#39;a secret password&#39;</span><span class="p">,</span> <span class="p">[</span>
-    <span class="s1">&#39;database&#39;</span> <span class="o">=&gt;</span> <span class="p">[</span>
-        <span class="s1">&#39;dsn&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;mysql:host=127.0.0.1;dbname=asterisk&#39;</span><span class="p">,</span>
-        <span class="s1">&#39;username&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;&#39;</span><span class="p">,</span>
-        <span class="s1">&#39;password&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;&#39;</span><span class="p">,</span>
-        <span class="s1">&#39;database&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;&#39;</span><span class="p">,</span>
-        <span class="s1">&#39;freeze&#39;</span> <span class="o">=&gt;</span> <span class="k">false</span><span class="p">,</span>
-        <span class="s1">&#39;debug&#39;</span> <span class="o">=&gt;</span> <span class="k">false</span>
-    <span class="p">],</span>
-    <span class="s1">&#39;ami&#39;</span> <span class="o">=&gt;</span> <span class="p">[</span>
-        <span class="s1">&#39;server&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;127.0.0.1&#39;</span><span class="p">,</span>
-        <span class="s1">&#39;port&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;5038&#39;</span><span class="p">,</span>
-        <span class="s1">&#39;username&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;&#39;</span><span class="p">,</span>
-        <span class="s1">&#39;password&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;&#39;</span>
-    <span class="p">]</span>
-<span class="p">]);</span>
+<span class="nv">$client</span> <span class="o">=</span> <span class="nx">plinker_client</span><span class="p">(</span><span class="s1">&#39;http://example.com/server.php&#39;</span><span class="p">,</span> <span class="s1">&#39;a secret password&#39;</span><span class="p">);</span>
 </pre></div>
 
 
 <h2 id="methods">Methods<a class="headerlink" href="#methods" title="Permanent link">&para;</a></h2>
 <p>Once setup, you call the class though its namespace to its method.</p>
-<h3 id="command">Command<a class="headerlink" href="#command" title="Permanent link">&para;</a></h3>
-<p>Execute ASM command.</p>
+<h3 id="encode">Encode<a class="headerlink" href="#encode" title="Permanent link">&para;</a></h3>
+<p>Encode a string.</p>
 <p><strong>Call</strong></p>
-<div class="codehilite"><pre><span></span>$result = $client-&gt;asterisk-&gt;command(&#39;sip show peers&#39;);
+<div class="codehilite"><pre><span></span><span class="x">$result = $client-&gt;base91-&gt;encode(&#39;encode this string&#39;);</span>
 </pre></div>
 
 
 <p><strong>Response</strong></p>
-<div class="codehilite"><pre><span></span>
+<div class="codehilite"><pre><span></span>toX&lt;5+UCmUW6GFso^zZ2(.A
 </pre></div>
 
 
-<h3 id="get-queue">Get Queue<a class="headerlink" href="#get-queue" title="Permanent link">&para;</a></h3>
-<p>Connect into AMI and issue asterisk command [queue show *].</p>
+<h3 id="decode">Decode<a class="headerlink" href="#decode" title="Permanent link">&para;</a></h3>
+<p>Decode a string.</p>
 <p><strong>Call</strong></p>
-<div class="codehilite"><pre><span></span>$result = $client-&gt;asterisk-&gt;getQueue(&#39;foo&#39;);
+<div class="codehilite"><pre><span></span>$result = $client-&gt;base91-&gt;decode(&#39;toX&lt;5+UCmUW6GFso^zZ2(.A&#39;);
 </pre></div>
 
 
 <p><strong>Response</strong></p>
-<div class="codehilite"><pre><span></span>
+<div class="codehilite"><pre><span></span>encode this string
 </pre></div>
 
 
-<h3 id="show-channels">Show Channels<a class="headerlink" href="#show-channels" title="Permanent link">&para;</a></h3>
-<p>Connect into AMI and issue asterisk command [core show channels].</p>
-<p><strong>Call</strong></p>
-<div class="codehilite"><pre><span></span>$result = $client-&gt;asterisk-&gt;coreShowChannels();
-</pre></div>
-
-
-<p><strong>Response</strong></p>
-<div class="codehilite"><pre><span></span>Array
-(
-    &#39;active_channels&#39; =&gt; 0,
-    &#39;active_calls&#39; =&gt; 0,
-    &#39;calls_processed&#39; =&gt; 0
-}
-</pre></div>
-
-
-<p>And other methods see: <code class="codehilite">vendor/asterisk/src/Asterisk.php</code></p>
 <h2 id="testing">Testing<a class="headerlink" href="#testing" title="Permanent link">&para;</a></h2>
 <p>There are no tests setup for this component.</p>
 <h2 id="contributing">Contributing<a class="headerlink" href="#contributing" title="Permanent link">&para;</a></h2>
